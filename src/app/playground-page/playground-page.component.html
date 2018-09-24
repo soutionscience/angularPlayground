@@ -1,0 +1,25 @@
+<div class="container">
+    <h1 class="title is-3">Playground area</h1>
+    <p class="subtitle is-6">This is designed to showcase web3's interaction with angular , metamask and ..</p>
+    <div class="checkmetask">
+            <article class="message" [ngClass]="installedMetamask ? 'is-primary' : 'is-danger'">
+                    <div class="message-header">
+                      <p>{{heading}}</p>
+                      <button class="delete" aria-label="delete"></button>
+                    </div>
+                    <div class="message-body">
+                     {{message}}
+                    </div>
+                  </article>
+    </div>
+    <div class="mainBody">
+        <div class="mycard">
+            <p>Accounts</p>
+            <div class="box">
+
+            </div>
+        </div>
+    </div>
+
+   
+</div>

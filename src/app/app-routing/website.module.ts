@@ -10,7 +10,8 @@ import { FooterComponent } from '../footer/footer.component';
 
 const routes: Routes =[
   {path: '', component: WebsiteComponent, children: [
-    {path: 'home', loadChildren: './home.module#HomeModule' }
+    {path: 'home', loadChildren: './home.module#HomeModule' },
+    {path: 'dapps/playground', loadChildren: './playground.module#PlaygroundModule'}
   ]}
 ]
 
@@ -19,6 +20,6 @@ const routes: Routes =[
     CommonModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [WebsiteComponent, NavbarComponent, FooterComponent, BannerComponent]
+  declarations: [WebsiteComponent,FooterComponent, NavbarComponent]
 })
 export class WebsiteModule { }
