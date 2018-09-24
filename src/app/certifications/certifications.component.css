@@ -1,0 +1,51 @@
+.certifications{
+    background-color: aqua;
+    min-height: 400px;
+
+}
+.heading{
+    background-color: rgb(25, 25, 44);
+    padding-top: 4px;
+    /* padding-bottom: 4px; */
+    margin-bottom: 0px;
+
+}
+.heading .title{
+    color: white;
+}
+
+.separator{
+    margin-top: 0px;
+    background-color: aliceblue;
+    min-height: 8px;
+
+}
+.mybody{
+   /* background: white; */
+    color: darkslategray;
+    margin-top: 4px;
+    padding: 4px;
+}
+
+.cert-image{
+	
+	border: 4px white solid;
+	border-radius: 75%;
+	height: 250px;
+	width: 250px;
+	overflow: hidden;
+    text-align: center;
+    padding-top: 25%;
+	margin-bottom: 4px;
+	
+}
+
+.nodejs{
+    background-color: white;
+    padding-top: 50%;
+    background-image: url('../../assets/images/node.png');
+    height: 250px;width: 250px;
+    background-repeat: no-repeat;
+    background-size: cover
+
+}

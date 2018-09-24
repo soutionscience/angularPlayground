@@ -1,0 +1,36 @@
+.projects{
+    min-height: 400px;
+    /* margin-top: 4px; */
+    margin-bottom: 8px;
+}
+.projects .heading{
+    background-color:aqua;
+    width: 100%;
+   /* // margin-top: 8px; */
+    margin-bottom: 8px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    color: white;
+}
+.title{
+    color: white;
+}
+.content{
+    margin-top: 8px;
+}
+
+.dapp{
+    background-image: url('../../assets/images/dapps2.png');
+    height: 200px;
+    background-size: cover;
+}
+.websites{
+    background-image: url('../../assets/images/website.png');
+    height: 200px;
+    background-size: cover;
+}
+.games{
+    background-image: url('../../assets/images/flappy.png');
+    height: 200px;
+    background-size: cover;
+}

@@ -1,0 +1,6 @@
+.banner{
+    background-image: url('../../assets/images/web-development.png');
+    min-height: 400px;
+    min-width: 100%;
+    background-size: cover;
+}
