@@ -50,4 +50,15 @@ export class Web3ServiceService {
 
    }
 }
+getBalance(account): Observable<any>{
+  return Observable.create(observer=>{
+    this.web3.eth.getBalance(account, (err, balance)=>{
+      if(err){
+        observer.error('there was an error fetching account balance')
+      }
+      observer.next(this.web3.fromWei(balance, 'ether'));
+      observer.complete();
+    })
+  })
+}
 }

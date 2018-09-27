@@ -13,6 +13,7 @@ export class PlaygroundPageComponent implements OnInit {
   installedMetamask : boolean
   accounts: any [];
   totalAccounts: any;
+  balance: Number;
 
   constructor(private webService: Web3ServiceService) { }
 
@@ -26,6 +27,7 @@ export class PlaygroundPageComponent implements OnInit {
 
   getInfo(){
     this.checknumberOfAccounts()
+    this.getAccountBalance(this.accounts[0])
 
   }
   checkMetamask(){
@@ -45,6 +47,12 @@ export class PlaygroundPageComponent implements OnInit {
      this.accounts = resp;
      this.totalAccounts = this.accounts.length;
      console.log(this.totalAccounts)
+    })
+  }
+  getAccountBalance(account){
+    this.webService.getBalance(account).subscribe(resp=>{
+      this.balance = resp;
+      console.log(this.balance)
     })
   }
 
