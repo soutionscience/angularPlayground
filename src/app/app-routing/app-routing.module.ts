@@ -6,7 +6,8 @@ import { WebsiteComponent } from '../website/website.component';
 
 
 const routes: Routes =[
-  {path: '', loadChildren: './website.module#WebsiteModule' }
+  {path: '', loadChildren: './website.module#WebsiteModule'},
+  {path: '', redirectTo: 'dapps/playground', pathMatch: 'full'},
 
 ]
 

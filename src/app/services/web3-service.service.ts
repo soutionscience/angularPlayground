@@ -50,3 +50,4 @@ export class Web3ServiceService {
 
    }
 }
+}

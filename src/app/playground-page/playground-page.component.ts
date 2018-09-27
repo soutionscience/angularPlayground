@@ -12,6 +12,7 @@ export class PlaygroundPageComponent implements OnInit {
   heading: String
   installedMetamask : boolean
   accounts: any [];
+  totalAccounts: any;
 
   constructor(private webService: Web3ServiceService) { }
 
@@ -19,9 +20,13 @@ export class PlaygroundPageComponent implements OnInit {
     this.installedMetamask =false;
     this.heading ='';
     this.message ='';
-    this.checkMetamask()
+    this.checkMetamask();
+    this.checknumberOfAccounts();
+ }
+
+  getInfo(){
     this.checknumberOfAccounts()
- 
+
   }
   checkMetamask(){
   
@@ -36,7 +41,11 @@ export class PlaygroundPageComponent implements OnInit {
     }
   }
   checknumberOfAccounts(){
-    this.webService.getAccounts().subscribe(resp=>{console.log(resp)})
+    this.webService.getAccounts().subscribe(resp=>{
+     this.accounts = resp;
+     this.totalAccounts = this.accounts.length;
+     console.log(this.totalAccounts)
+    })
   }
 
 }
