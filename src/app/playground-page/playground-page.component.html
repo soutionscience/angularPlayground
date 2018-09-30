@@ -13,6 +13,7 @@
                   </article>
     </div>
     <div class="mainBody">
+        <app-connect></app-connect>
         <div class="mycard">
             <p>Accounts</p>
             <div class="box">
@@ -65,7 +66,7 @@
                                       </header>
                                       <div class="card-content">
                                           <div *ngIf="accounts">
-                                              <p>Account Balance: {{balance | number}}</p>
+                                              <p>Account Balance: {{balance}} ether</p>
 
                                           </div>
                                       </div>

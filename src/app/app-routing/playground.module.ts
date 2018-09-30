@@ -4,6 +4,7 @@ import { PlaygroundPageComponent } from '../playground-page/playground-page.comp
 import { Routes, RouterModule } from '@angular/router';
 import { MetamaskCheckComponent } from '../metamask-check/metamask-check.component';
 import { UnlockComponent } from '../unlock/unlock.component';
+import { ConnectComponent } from '../connect/connect.component';
 
 
 const routes: Routes =[
@@ -15,6 +16,6 @@ const routes: Routes =[
     CommonModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [PlaygroundPageComponent, MetamaskCheckComponent, UnlockComponent]
+  declarations: [PlaygroundPageComponent, MetamaskCheckComponent, UnlockComponent, ConnectComponent]
 })
 export class PlaygroundModule { }
