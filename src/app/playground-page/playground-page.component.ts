@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { Web3ServiceService} from '../services/web3-service.service'
+import { EventEmitter } from 'protractor';
 
 @Component({
   selector: 'app-playground-page',
@@ -7,6 +8,7 @@ import { Web3ServiceService} from '../services/web3-service.service'
   styleUrls: ['./playground-page.component.css']
 })
 export class PlaygroundPageComponent implements OnInit {
+  //@Output()Myaccounts = new EventEmitter();
 
   message: String
   heading: String

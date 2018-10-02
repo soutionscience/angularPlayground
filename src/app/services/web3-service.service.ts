@@ -33,6 +33,28 @@ export class Web3ServiceService {
 
   }
 
+  //check metamsk version
+  checkversion(): Observable<any>{
+  //  return this.web3.version.getNode(function(err, result){
+  //     if(err){
+  //       return err;
+  //     }else{
+  //       console.log("result has", result)
+  //       return result
+  //     }
+  //   })
+  return Observable.create(observer=>{
+    this.web3.version.getNode(function(err, result){
+      if(err){
+        observer.error("there was an error getting info")
+      }else{
+        observer.next(result);
+        observer.complete()
+      }
+    })
+  })
+  }
+
 
   //connect to testRPC
   connectRpc(url){

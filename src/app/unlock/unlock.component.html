@@ -16,6 +16,22 @@
                 </a>
               </header>
               <div class="card-content">
+                <form [formGroup]="accountsForm">
+                    <div class="field is-grouped">
+                        <label>Select Account</label>
+                        
+                        <div class="control is-expanded">
+                            <div class="select is-fullwidth">
+                              {{accountsForm.values |json}}
+                              <select name="accounts" formControlName ="selected">
+                                <option  *ngFor="let a of accounts" value="a"> {{a}}</option>
+                              
+                              </select>
+                            </div>
+                          </div>
+                      </div>
+                      <button class="button" type="button" (click)="unlockSelected()">Unlock</button>
+                </form>
 
               </div>
         </div>

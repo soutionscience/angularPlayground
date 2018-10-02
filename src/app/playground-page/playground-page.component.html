@@ -34,11 +34,22 @@
                                               </header>
                                               <div class="card-content">
                                                   <div *ngIf="accounts">
-                                                      <p>Number of Accounts : {{totalAccounts}}</p>
-                                                      <div *ngFor ="let a of accounts">
-                                                    <p>Main Account number : {{a | slice:0:12}} ...</p>
-
-                                                      </div>
+                                                        <p>Number of Accounts : {{totalAccounts}}</p>
+                                                      <table class="table is-bordered ">
+                                                          <thead>
+                                                              <tr class="table is-primary">
+                                                                  <th>N.O</th>
+                                                                  <th class="table is-fullwidth">Number</th>
+                                                              </tr>
+                                                          </thead>
+                                                          <tbody div *ngFor ="let a of accounts; let rowIndex=index">
+                                                              <tr>
+                                                                  <td>{{rowIndex +1 }}</td>
+                                                                  <td> {{a}}</td>
+                                                              </tr>
+                                                          </tbody>
+                                                      </table>
+                                                 
 
                                                   </div>
                                                   <button class="button is-primary" (click)="getInfo()">
@@ -78,7 +89,7 @@
             </div>
         </div>
     </div>
-    <app-unlock></app-unlock>
+    <app-unlock *ngIf="accounts" [accounts]="accounts"></app-unlock>
 
    
 </div>

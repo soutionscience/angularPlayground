@@ -30,6 +30,24 @@
           </div>
 
         </div>
+        <div class="column is-half">
+          <div class="card">
+              <header class="card-header">
+              <p class="card-header-title">
+                  Version Infomation
+                 </p>
+                 <a href="#" class="card-header-icon" aria-label="more options">
+                   <span class="icon">
+                     <i class="fas fa-angle-down" aria-hidden="true"></i>
+                   </span>
+                 </a>
+               </header>
+               <div *ngIf="version" class="card-content">
+                 you are running in: {{version}}
+               </div>
+            
+          </div>
+        </div>
       </div>
 
     </div>
