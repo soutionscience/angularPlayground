@@ -81,7 +81,7 @@ export class Web3ServiceService {
    })
 }
 
-getBalance(account): Observable<any>{
+getBalance(account): Observable<any>{ //get accounts balance
   return Observable.create(observer=>{
     this.web3.eth.getBalance(account, (err, balance)=>{
       if(err){
@@ -92,4 +92,20 @@ getBalance(account): Observable<any>{
     })
   })
   }
+  doUnlock(number, password): Observable<any>{
+    return Observable.create(observer=>{
+    this.web3.personal.unlockAccount(number, password, function(err, result){
+      if(err){
+        observer.error('there was an error fetching account balance')
+      
+      }else{
+        if(result){
+         observer.next(result)
+         observer.complete()
+        }
+      }
+
+    })
+  })
+}
 }

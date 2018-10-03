@@ -5,6 +5,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { MetamaskCheckComponent } from '../metamask-check/metamask-check.component';
 import { UnlockComponent } from '../unlock/unlock.component';
 import { ConnectComponent } from '../connect/connect.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SendComponent } from '../send/send.component';
 
 
 const routes: Routes =[
@@ -14,8 +16,10 @@ const routes: Routes =[
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    FormsModule,
+    ReactiveFormsModule
   ],
-  declarations: [PlaygroundPageComponent, MetamaskCheckComponent, UnlockComponent, ConnectComponent]
+  declarations: [PlaygroundPageComponent, MetamaskCheckComponent, UnlockComponent, ConnectComponent, SendComponent]
 })
 export class PlaygroundModule { }
