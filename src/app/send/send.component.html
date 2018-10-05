@@ -21,7 +21,7 @@
                       <div class="control is-expanded">
                           <div class="select is-fullwidth">
                          
-                            <select name="accounts" formControlName ="From">
+                            <select name="accounts" formControlName ="from">
                               <option  *ngFor="let a of accounts" [ngValue] ="a"> {{a}}</option>
                             
                             </select>
@@ -32,7 +32,7 @@
                         <div class="control is-expanded">
                             <div class="select is-fullwidth">
                         
-                              <select name="accounts" formControlName ="To">
+                              <select name="accounts" formControlName ="to">
                                 <option  *ngFor="let a of accounts" [ngValue] ="a"> {{a}}</option>
                               
                               </select>
@@ -56,11 +56,11 @@
                                 <div class="field">
                                     <label class="label">Gas Price (wei)</label>
                                     <div class="control">
-                                      <input class="input" type="text" placeholder="Text input" formControlName="price">
+                                      <input class="input" type="text" placeholder="Text input" formControlName="gasPrice">
                                     </div>
                                     <p class="help">Gas Price in wei. Default = </p>
                                   </div>
-                                  <button class="button">Send</button>
+                                  <button class="button" type="submit" (click)="send()">Send</button>
                                   <button class="button">Reset</button>
 
                   </form>
@@ -69,6 +69,19 @@
             
 
           </div>
+        </div>
+        <div class="column is-half">
+          <div class="card">
+            <header class="card-header">
+                <p class="card-header-title">
+                    Link to transaction
+                    </p>
+            </header>
+            <div class="card-content">
+            <a target="blank" href="`https://etherscan.io${code}`">Ethascan link</a>
+            </div>
+          </div>
+
         </div>
       </div>
     
