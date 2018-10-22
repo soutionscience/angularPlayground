@@ -27,12 +27,32 @@
                     <textarea class="textarea" placeholder="Textarea" formControlName="abi"></textarea>
                   </div>
               </div>
-           <button class="button is-danger">Deploy</button>
+              <div class="field">
+                <label class="lebel">Gas</label>
+                <div class="control">
+                  <textarea formControlName="gas"></textarea>
+                </div>
+              </div>
+           <button class="button is-danger" (click)="deployContract()">Deploy</button>
           </form>
 
         </div>
       </div>
 
+    </div>
+    <div class="column is-half">
+      <div class="card">
+        <header class="card-header">
+         <p class="card-header-title">
+           Contract links
+         </p>
+        </header>
+        <div class="card-content">
+          <p class="title">Transaction hash</p>
+          <p *ngIf ="hashes[0]">Hasg: {{hashes[0]}}</p>
+
+        </div>
+      </div>
     </div>
   </div>
   </div>

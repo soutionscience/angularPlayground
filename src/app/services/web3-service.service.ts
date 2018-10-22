@@ -149,4 +149,37 @@ doCompileSolidityCode(code):Observable<any>{
 flattenSource(src){
   return src.replace(/\n/g, ' ');
 }
+
+doDeployContract(byteCode, abiDef, gas): Observable <any[]>{
+  let  abiDefinition = JSON.parse(abiDef);
+  let contract = this.web3.eth.contract(abiDefinition);
+  let params = { //create params
+    from: this.web3.eth.coinbase,
+    data: byteCode,
+    gas: gas
+
+  }
+  //ready to deploy contract
+  // 2 results are send back:  the transaction hash and later contract address.
+  let constructor_param = 10; // i dont get y this
+  return Observable.create(observer=>{
+  contract.new(constructor_param, params, (err, result)=>{
+    if(err){
+      console.log("error in the beginning")
+    observer.error(err)
+
+    }else{
+      if(result.address){
+        console.log("result address ", result.address)
+        observer.next(result.address)
+      }else{
+        console.log("result transactionHash: ",result.transactionHash)
+        observer.next(result.transactionHash)
+      }
+      observer.complete()
+    }
+  })
+})
+
+}
 }

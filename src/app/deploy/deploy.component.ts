@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Web3ServiceService } from '../services/web3-service.service';
 
 @Component({
   selector: 'app-deploy',
@@ -8,14 +9,20 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class DeployComponent implements OnInit {
   deployForm: FormGroup
+  hashes: any []
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private web3Api: Web3ServiceService) {
+    this.hashes = [ ]
+   }
 
   ngOnInit() {
     this.createForm()
+    
+    
   }
   createForm(){
      this.deployForm = this.fb.group({
+       gas: [4700000],
       byteCode: [`{
         "linkReferences": {},
         "object": "608060405234801561001057600080fd5b5060405160208061018e8339810180604052810190808051906020019092919050505080600081905550506101448061004a6000396000f30060806040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806367e0badb14610051578063cd16ecbf1461007c575b600080fd5b34801561005d57600080fd5b506100666100a9565b6040518082815260200191505060405180910390f35b34801561008857600080fd5b506100a7600480360381019080803590602001909291905050506100b2565b005b60008054905090565b600080549050816000819055506000546001026000191681600102600019163373ffffffffffffffffffffffffffffffffffffffff167f108fd0bf2253f6baf35f111ba80fb5369c2e004b88e36ac8486fcee0c87e61ce60405160405180910390a450505600a165627a7a723058203d8a79ac835d371482e73762067f4b677799fb30c4eaefb08eb8e9bc3aceb17a0029",
@@ -88,5 +95,17 @@ export class DeployComponent implements OnInit {
 
      })
   }
+
+
+  deployContract(){
+    this.web3Api.doDeployContract(this.deployForm.value.byteCode, 
+      this.deployForm.value.abi, this.deployForm.value.gas).subscribe(resp=>{
+        console.log("the responce is ", resp)
+        this.hashes.push(resp)
+        console.log("what is in hash ", this.hashes)
+      })
+      console.log("what is in hash ", this.hashes)
+  }
+ 
 
 }
