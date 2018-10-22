@@ -123,4 +123,30 @@ doSendTransaction(transactionObject):Observable<any>{
 
   })
 }
+
+//compile raw solidity code
+doCompileSolidityCode(code):Observable<any>{
+
+ code = this.flattenSource(code);
+  
+  return Observable.create(observer=>{
+    this.web3.eth.compile.solidity(code, function(err, result){
+      if(err){ console.log("this ama ", err)
+              observer.error("compile error ", err)
+      }else{
+        console.log('what is the result then', result)
+        observer.next(result);
+        observer.complete()
+      }
+    
+      
+    })
+
+  })
+
+}
+
+flattenSource(src){
+  return src.replace(/\n/g, ' ');
+}
 }

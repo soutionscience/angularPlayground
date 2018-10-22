@@ -1,0 +1,40 @@
+<div class="deploy">
+
+  <p class="title">
+    Deploy contract to
+  </p>
+  <div class="box">
+    <div class="notification">
+  <div class="columns">
+    <div class="column is-half ">
+      <div class="card">
+        <header class="card-header">
+            <p class="card-header-title">
+                Deploy Contract from abi 
+                </p>
+        </header>
+        <div class="card-content">
+          <form [formGroup]="deployForm">
+            <div class="field">
+              <label class="label"> Bytecode</label>
+              <div class="control">
+                  <textarea class="textarea" placeholder="Textarea" formControlName="byteCode"></textarea>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label"> Abi Definations</label>
+                <div class="control">
+                    <textarea class="textarea" placeholder="Textarea" formControlName="abi"></textarea>
+                  </div>
+              </div>
+           <button class="button is-danger">Deploy</button>
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+  </div>
+</div>
+</div>

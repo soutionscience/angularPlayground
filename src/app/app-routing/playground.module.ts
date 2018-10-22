@@ -8,6 +8,7 @@ import { ConnectComponent } from '../connect/connect.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SendComponent } from '../send/send.component';
 import { CompileComponent } from '../compile/compile.component';
+import { DeployComponent } from '../deploy/deploy.component';
 
 
 const routes: Routes =[
@@ -21,6 +22,6 @@ const routes: Routes =[
     FormsModule,
     ReactiveFormsModule
   ],
-  declarations: [PlaygroundPageComponent, MetamaskCheckComponent, UnlockComponent, ConnectComponent, SendComponent, CompileComponent]
+  declarations: [PlaygroundPageComponent, MetamaskCheckComponent, UnlockComponent, ConnectComponent, SendComponent, CompileComponent, DeployComponent]
 })
 export class PlaygroundModule { }

@@ -16,13 +16,14 @@
                   </a>
                 </header>
                 <div class="card-content">
-                  <form>
+                  <form [formGroup]="compileForm">
                       <div class="field">
                           <label class="label">Solidity code</label>
                           <div class="control">
-                            <textarea class="textarea" placeholder="Textarea"></textarea>
+                            <textarea class="textarea" placeholder="Textarea" formControlName="compileCode"></textarea>
                           </div>
                         </div>
+                        <button class="button" (click)="compileSolidity()">Submit</button>
                   </form>
                 </div>
           </div>
