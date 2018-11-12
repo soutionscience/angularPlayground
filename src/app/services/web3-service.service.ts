@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import Web3 from 'web3';
 import { bindNodeCallback, Observable } from 'rxjs';
+import { runInThisContext } from 'vm';
 
 declare var window: any;
 
@@ -150,11 +151,13 @@ flattenSource(src){
   return src.replace(/\n/g, ' ');
 }
 
-doDeployContract(byteCode, abiDef, gas): Observable <any[]>{
-  let  abiDefinition = JSON.parse(abiDef);
+ doDeployContract(byteCode, abiDef, gas): Observable <any[]>{
+  //let myCoinbase = '';
+ let  abiDefinition = JSON.parse(abiDef);
   let contract = this.web3.eth.contract(abiDefinition);
   let params = { //create params
-    from: this.web3.eth.coinbase,
+    //from: this.web3.eth.getCoinbase((err,coinbase)=>{return coinbase+ ''}),
+     from: this.web3.coinbase,
     data: byteCode,
     gas: gas
 
@@ -172,12 +175,14 @@ doDeployContract(byteCode, abiDef, gas): Observable <any[]>{
       if(result.address){
         console.log("result address ", result.address)
         observer.next(result.address)
-      }else{
-        console.log("result transactionHash: ",result.transactionHash)
+      }
+      else{
+        console.log("result transactionHash: ",result)
         observer.next(result.transactionHash)
       }
-      observer.complete()
+   
     }
+    observer.complete()
   })
 })
 

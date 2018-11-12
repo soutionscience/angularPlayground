@@ -8,7 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes =[
   {path: '', loadChildren: './website.module#WebsiteModule'},
-  {path: '', redirectTo: 'dapps/playground', pathMatch: 'full'},
+  {path: '', redirectTo: '/home', pathMatch: 'full'}
 
 ]
 

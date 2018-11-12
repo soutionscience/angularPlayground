@@ -1,0 +1,1 @@
+import {trigger, state, transition} from '@angular/animations'

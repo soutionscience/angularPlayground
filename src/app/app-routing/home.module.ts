@@ -6,6 +6,7 @@ import { CertificationsComponent } from '../certifications/certifications.compon
 import { ProjectsComponent } from '../projects/projects.component';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { BannerComponent } from '../banner/banner.component';
+import { AboutComponent } from '../about/about.component';
 
 
 
@@ -20,6 +21,6 @@ const routes: Routes =[
     CommonModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [HomeComponent, CertificationsComponent, ProjectsComponent, BannerComponent]
+  declarations: [HomeComponent, CertificationsComponent, ProjectsComponent, BannerComponent, AboutComponent]
 })
 export class HomeModule { }
