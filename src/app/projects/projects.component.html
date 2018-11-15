@@ -1,13 +1,15 @@
 <div class="projects">
-  <div class="heading">
+  <div>
     <div class="container">
-    <p class="title">Recent Projects</p>
+    <p [@expand]=state class="title">Recent Projects</p>
     </div>
   </div>
+
+
   <div class="container content">
   <div class="columns">
     <div class="column is-one-third">
-        <div class="card">
+        <div [@flyInOut]="state" class="card">
             <header class="card-header">
               <p class="card-header-title">
               My Decetralised Apps
@@ -22,23 +24,7 @@
            </div>
        
  <div class="card-content">
-    <!-- <div class="media">
-        <div class="media-left">
-          <figure class="image is-48x48">
-            <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
-          </figure>
-        </div>
-        <div class="media-content">
-          <p class="title is-4">John Smith</p>
-          <p class="subtitle is-6">@johnsmith</p>
-        </div>
-      </div> -->
-   
-
-
-
-
-      <div class="content">
+    <div class="content">
                   A collection of decentralised apps as a show case of skills working on the ethereum network.
               <br>
                 <p>Solidity, web3.js, truffle suit</p>
@@ -48,10 +34,10 @@
 
     </div>
     <div class="column is-one-third">
-        <div class="card">
+        <div [@expand]=state class="card">
             <header class="card-header">
               <p class="card-header-title">
-              My Decetralised Apps
+             Website Development Projects
               </p>
               <a href="#" class="card-header-icon" aria-label="more options">
                 <span class="icon">
@@ -63,36 +49,20 @@
            </div>
        
  <div class="card-content">
-    <!-- <div class="media">
-        <div class="media-left">
-          <figure class="image is-48x48">
-            <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
-          </figure>
-        </div>
-        <div class="media-content">
-          <p class="title is-4">John Smith</p>
-          <p class="subtitle is-6">@johnsmith</p>
-        </div>
-      </div> -->
-   
-
-
-
-
-      <div class="content">
-                  A collection of decentralised apps as a show case of skills working on the ethereum network.
+<div class="content">
+                  Website Projects in React, Angular and Node Js
               <br>
-                <p>Solidity, web3.js, truffle suit</p>
+                <p>Angular Js, react, ExpressJS, NodeJs MongoDb</p>
               </div>
             </div>
           </div>
 
     </div>
     <div class="column is-one-third">
-        <div class="card">
+        <div [@flyFromRight]="state" class="card">
             <header class="card-header">
               <p class="card-header-title">
-              My Decetralised Apps
+              Games and Fun Projects
               </p>
               <a href="#" class="card-header-icon" aria-label="more options">
                 <span class="icon">

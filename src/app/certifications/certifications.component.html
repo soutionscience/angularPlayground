@@ -1,7 +1,7 @@
 <div class="certifications">
   <div class="heading">
     <div class="container">
-      <p class="title">
+      <p [@expand]=state class="title">
         Certifications
       </p>
     </div>
@@ -10,15 +10,48 @@
   <div class="container">
     <div class="mybody">
       <div class="columns">
-        <div class="column  is-one-quarter">
+        <div [@expand]=state class="column cert is-one-quarter">
           <!-- <div class="image">
             <img src="../../assets/images/angular2.png" alt="angular" width="100px" width="100px" >
           </div> -->
-          <div class="cert-image nodejs"></div>
-          <div>
-              <h1 is-small>Server-side Development with NodeJS</h1>
-              <p>The Hong Kong University of Science and Technology</p>
-              <a>Read More</a>
+          <div class="shape nodejs"></div>
+          <div class ="story">
+              <p  class="title is-6">Server-side Development with NodeJS</p>
+              <p >The Hong Kong University of Science and Technology</p>
+              <a href="#" target="blank">Read More</a>
+          </div>
+        </div>
+        <div [@expand]=state class="column cert is-one-quarter">
+          <!-- <div class="image">
+            <img src="../../assets/images/angular2.png" alt="angular" width="100px" width="100px" >
+          </div> -->
+          <div class="shape angular"></div>
+          <div class ="story">
+              <p  class="title is-6">Front-End JavaScript Frameworks: Angular </p>
+              <p >The Hong Kong University of Science and Technology</p>
+              <a href="https://www.coursera.org/account/accomplishments/certificate/CZJFE56U6SAA" target="blank">Read More</a>
+          </div>
+        </div>
+        <div [@expand]=state class="column cert is-one-quarter">
+          <!-- <div class="image">
+            <img src="../../assets/images/angular2.png" alt="angular" width="100px" width="100px" >
+          </div> -->
+          <div class="shape ruby"></div>
+          <div class ="story">
+              <p  class="title is-6">Ruby on Rails:An Introduction- </p>
+              <p >Johns Hopkins University</p>
+              <a href="https://www.coursera.org/account/accomplishments/certificate/SF4VC6AXU2PZ" target="blank">Read More</a>
+          </div>
+        </div>
+        <div [@expand]=state class="column cert is-one-quarter">
+          <!-- <div class="image">
+            <img src="../../assets/images/angular2.png" alt="angular" width="100px" width="100px" >
+          </div> -->
+          <div class="shape html"></div>
+          <div class ="story">
+              <p  class="title is-6">HTML, CSS, and Javascript for Web Developers</p>
+              <p >Johns Hopkins University</p>
+              <a href="https://www.coursera.org/account/accomplishments/certificate/4KNK5UCD9XDH" target="blank">Read More</a>
           </div>
         </div>
 

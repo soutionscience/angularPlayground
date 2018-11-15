@@ -1,5 +1,5 @@
 .certifications{
-    background-color: aqua;
+    /* background-color: aqua; */
     min-height: 400px;
 
 }
@@ -39,13 +39,20 @@
 	margin-bottom: 4px;
 	
 }
-
-.nodejs{
+.cert{margin-right: 4px;}
+.nodejs{background-image: url('../../assets/images/node.png');}
+.angular{background-image: url('../../assets/images/angular2.png'); }
+.ruby{background-image: url('../../assets/images/rails.png'); }
+.html{background-image: url('../../assets/images/html.png'); }
+.shape{
     background-color: white;
     padding-top: 50%;
-    background-image: url('../../assets/images/node.png');
-    height: 250px;width: 250px;
+    height: 150px;width: 300px;
     background-repeat: no-repeat;
-    background-size: cover
+    background-size: cover;
+    margin-right: 4px;
 
+}
+.story{
+    color: grey;
 }

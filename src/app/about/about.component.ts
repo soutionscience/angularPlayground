@@ -32,8 +32,13 @@ export class AboutComponent implements OnInit {
   // }
 
 
-  ngOnInit() {
-    this.state='show'
+  ngOnInit() { }
+  ngAfterViewInit(){
+    this.state = 'show'
+  }
+
+  animate(){
+    this.state = this.state === 'hide'? 'show': 'hide';
   }
 
 }
