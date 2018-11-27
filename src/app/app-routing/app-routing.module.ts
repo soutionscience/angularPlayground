@@ -7,7 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 const routes: Routes =[
-  {path: '', loadChildren: './website.module#WebsiteModule'},
+ {path: '', loadChildren: './website.module#WebsiteModule'},
   {path: '', redirectTo: '/home', pathMatch: 'full'}
 
 ]

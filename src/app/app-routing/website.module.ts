@@ -10,9 +10,10 @@ import { FooterComponent } from '../footer/footer.component';
 
 const routes: Routes =[
   {path: '', component: WebsiteComponent, children: [
-    {path: 'home', loadChildren: './home.module#HomeModule' },
+    {path: '', loadChildren: './home.module#HomeModule' },
     {path: 'dapps/playground', loadChildren: './playground.module#PlaygroundModule'}
   ]}
+ 
 ]
 
 @NgModule({

@@ -4,3 +4,11 @@
     min-width: 100%;
     background-size: cover;
 }
+
+.mobile{
+    background-image: url('../../assets/images/web-development-mobile.png');
+    min-height: 400px;
+    min-width: 100%;
+    background-size: cover;
+
+}

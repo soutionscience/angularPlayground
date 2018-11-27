@@ -1052,6 +1052,14 @@ builtins@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/builtins/-/builtins-1.0.3.tgz#cb94faeb61c8696451db36534e1422f94f0aee88"
 
+bulma-extensions@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/bulma-extensions/-/bulma-extensions-4.0.0.tgz#c37b0c539179fb9cffffa1c0116a6639d0f1e871"
+
+bulma-pageloader@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/bulma-pageloader/-/bulma-pageloader-2.1.0.tgz#2c48c32bac98109bb59e46489b4e90292ec25e31"
+
 bulma@^0.7.1:
   version "0.7.2"
   resolved "https://registry.yarnpkg.com/bulma/-/bulma-0.7.2.tgz#8e944377b74c7926558830d38d8e19eaf49f5fb6"
