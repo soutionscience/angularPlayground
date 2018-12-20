@@ -1,6 +1,7 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { Web3ServiceService} from '../services/web3-service.service'
 import { EventEmitter } from 'protractor';
+import { AccountsInfo } from '../shared/accountsInfo';
 
 @Component({
   selector: 'app-playground-page',
@@ -9,11 +10,11 @@ import { EventEmitter } from 'protractor';
 })
 export class PlaygroundPageComponent implements OnInit {
   //@Output()Myaccounts = new EventEmitter();
-
+  accountsInfo: AccountsInfo[];
   message: String
   heading: String
   installedMetamask : boolean;
-  accounts: String [];
+  accounts: any [];
   totalAccounts: any;
   balance: String;
 
@@ -46,12 +47,25 @@ export class PlaygroundPageComponent implements OnInit {
   }
   checknumberOfAccounts(){
     this.webService.getAccounts().subscribe(resp=>{
-     this.accounts = resp;
+     this.accounts= resp;
+    // resp.forEach(element => {
+    //   this.webService.getBalance(element).subscribe(resp=>{
+    //     console.log('id: ', element, 'balance: ', resp)
+    //     this.accountsInfo.push({_id: element, balance: 100})
+    //     // console.log('objects', this.accountsInfo)
+
+    //   })
+    //  });
+     
      this.totalAccounts = this.accounts.length;
+
+
       this.webService.getBalance(this.accounts[0]).subscribe(resp=>{
         this.balance = resp
       })
     })
+    //add account balances
+
   }
   getAccountBalance(account){
     this.webService.getBalance(account).subscribe(resp=>{

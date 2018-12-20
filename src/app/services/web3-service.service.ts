@@ -4,6 +4,9 @@ import { bindNodeCallback, Observable } from 'rxjs';
 import { runInThisContext } from 'vm';
 
 declare var window: any;
+declare var require: any
+
+let campaignFactory = require('../../ethereum/contracts/LeagueFactory.json')
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +17,7 @@ export class Web3ServiceService {
 
   checkAndInstatiateWeb3 =()=>{
     // Checking if Web3 has been injected by the browser (Mist/MetaMask)
+    //  console.log("testing", campaignFactory)
      if (typeof window.web3 !== 'undefined') {
       console.warn(
         'Using web3 detected from external source. If you find that your accounts don\'t appear or you have 0 MetaCoin, ensure you\'ve configured that source properly. If using MetaMask, see the following link. Feel free to delete this warning. :) http://truffleframework.com/tutorials/truffle-and-metamask'
@@ -151,10 +155,14 @@ flattenSource(src){
   return src.replace(/\n/g, ' ');
 }
 
- doDeployContract(byteCode, abiDef, gas): Observable <any[]>{
+ doDeployContract = (byteCode, abiDef, gas): Observable<any>=>{
+ console.log("hitting web3 service")
+
   //let myCoinbase = '';
- let  abiDefinition = JSON.parse(abiDef);
-  let contract = this.web3.eth.contract(abiDefinition);
+  let contract;
+let  abiDefinition = abiDef
+ contract = new this.web3.eth.contract(abiDefinition);
+
   let params = { //create params
     //from: this.web3.eth.getCoinbase((err,coinbase)=>{return coinbase+ ''}),
      from: this.web3.coinbase,
@@ -162,29 +170,44 @@ flattenSource(src){
     gas: gas
 
   }
-  //ready to deploy contract
-  // 2 results are send back:  the transaction hash and later contract address.
+//   //ready to deploy contract
+//   // 2 results are send back:  the transaction hash and later contract address.
   let constructor_param = 10; // i dont get y this
-  return Observable.create(observer=>{
-  contract.new(constructor_param, params, (err, result)=>{
+  console.log('what is a contract ', contract)
+  return contract.new(constructor_param, params, (err, result)=>{
+    console.log('test me marsh')
     if(err){
-      console.log("error in the beginning")
-    observer.error(err)
-
-    }else{
-      if(result.address){
-        console.log("result address ", result.address)
-        observer.next(result.address)
-      }
-      else{
-        console.log("result transactionHash: ",result)
-        observer.next(result.transactionHash)
-      }
-   
+      console.log(err)
+      return err
     }
-    observer.complete()
+    else{
+      console.log(result)
+      return result
+    }
   })
-})
+//   return Observable.create(observer=>{
+//   contract.new(constructor_param, params, (err, result)=>{
+//     console.log("hera")
+//     if(err){
+//       console.log("error in the beginning")
+//     observer.error(err)
+
+//     }else{
+//       console.log('what is in result ', result)
+//       if(result.transactionHash){
+//         console.log("result transactionHash: ",result.transactionHash)
+//         observer.next(result.transactionHash)
+   
+//       }
+//       else{
+//         console.log("result address ", result.address)
+//         observer.next(result.address)
+//       }
+   
+//     }
+//     observer.complete()
+//   })
+// })
 
 }
 }

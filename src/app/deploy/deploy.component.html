@@ -24,7 +24,7 @@
             <div class="field">
                 <label class="label"> Abi Definations</label>
                 <div class="control">
-                    <textarea class="textarea" placeholder="Textarea" formControlName="abi"></textarea>
+                    <textarea [value] = "deployForm.get('abi').value | json" class="textarea" placeholder="Textarea" formControlName="abi"></textarea>
                   </div>
               </div>
               <div class="field">
