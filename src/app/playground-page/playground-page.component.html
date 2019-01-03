@@ -40,12 +40,15 @@
                                                               <tr class="table is-primary">
                                                                   <th>N.O</th>
                                                                   <th class="table is-fullwidth">Number</th>
+                                                                  <th>Balance</th>
                                                               </tr>
+                                                              
                                                           </thead>
-                                                          <tbody div *ngFor ="let a of accounts; let rowIndex=index">
+                                                          <tbody div *ngFor ="let a of accountsInfo; let rowIndex=index">
                                                               <tr>
                                                                   <td>{{rowIndex +1 }}</td>
-                                                                  <td> {{a.id}}</td>
+                                                                  <td> {{a._id | slice:0:20}}...</td>
+                                                                  <td>{{a.balance}} Ether</td>
                                                               </tr>
                                                           </tbody>
                                                       </table>

@@ -116,12 +116,15 @@ getBalance(account): Observable<any>{ //get accounts balance
 
 doSendTransaction(transactionObject):Observable<any>{
   return Observable.create(observer=>{
+    transactionObject.value = this.web3.toWei(transactionObject.value, 'ether');
+    console.log('transaction ', transactionObject.value)
+
 
     this.web3.eth.sendTransaction(transactionObject, function(err, result){
       if(err){
         observer.error("sending transaction has error", err)
       }
-      console.log("waht is here? ", transactionObject)
+      // console.log("waht is here? ", transactionObject)
       observer.next(result)
       observer.complete()
     })

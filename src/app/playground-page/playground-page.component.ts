@@ -46,16 +46,17 @@ export class PlaygroundPageComponent implements OnInit {
     }
   }
   checknumberOfAccounts(){
+    this.accountsInfo= [];
     this.webService.getAccounts().subscribe(resp=>{
      this.accounts= resp;
-    // resp.forEach(element => {
-    //   this.webService.getBalance(element).subscribe(resp=>{
-    //     console.log('id: ', element, 'balance: ', resp)
-    //     this.accountsInfo.push({_id: element, balance: 100})
-    //     // console.log('objects', this.accountsInfo)
+    resp.forEach(element => {
+      this.webService.getBalance(element).subscribe(resp=>{
+        //console.log('id: ', element, 'balance: ', resp)
+        this.accountsInfo.push({_id: element, balance: resp})
+        console.log('objects', this.accountsInfo)
 
-    //   })
-    //  });
+      })
+     });
      
      this.totalAccounts = this.accounts.length;
 
