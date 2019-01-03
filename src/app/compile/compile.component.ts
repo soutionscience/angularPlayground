@@ -10,8 +10,10 @@ import { Web3ServiceService } from '../services/web3-service.service';
 export class CompileComponent implements OnInit {
   compileForm: FormGroup
   solidityCode: String
+  deprecated: Boolean
 
   constructor( private fb: FormBuilder, private web3Service: Web3ServiceService) {
+    this.deprecated = true;
     this.solidityCode = `pragma solidity ^0.4.6;
     contract MyContract {
       uint   num;

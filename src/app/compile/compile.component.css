@@ -1,0 +1,6 @@
+.compile{
+    color: grey;
+}
+#deprecated .card-header .card-header-title{
+    color: rgb(211, 207, 207);
+}
