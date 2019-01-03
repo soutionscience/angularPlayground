@@ -163,7 +163,7 @@ flattenSource(src){
 
   //let myCoinbase = '';
   let contract;
-let  abiDefinition = abiDef
+   let  abiDefinition = abiDef
  contract = new this.web3.eth.contract(abiDefinition);
 
   let params = { //create params
