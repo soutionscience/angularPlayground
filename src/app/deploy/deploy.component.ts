@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Web3ServiceService } from '../services/web3-service.service';
+import { TouchSequence } from 'selenium-webdriver';
 
 let tutorialCode = require('../../ethereum/contracts/tutorial.json')
 
@@ -12,7 +13,9 @@ let tutorialCode = require('../../ethereum/contracts/tutorial.json')
 })
 export class DeployComponent implements OnInit {
   deployForm: FormGroup
-  hashes: any []
+  hashes: any [];
+  etherscanLink: String;
+  contractAddress: String
 
   constructor(private fb: FormBuilder, private web3Api: Web3ServiceService) {
     this.hashes = [ ]
@@ -36,15 +39,22 @@ export class DeployComponent implements OnInit {
 
 
   deployContract(){
-    console.log("hitting deploy contract");
-    console.log("what is in ,", this.deployForm.value.abi)
+   
     this.web3Api.doDeployContract(this.deployForm.value.byteCode, 
       this.deployForm.value.abi, this.deployForm.value.gas).subscribe(resp=>{
-        console.log("the responce is ", resp)
-        this.hashes.push(resp)
-        console.log("what is in hash ", this.hashes)
+         this.web3Api.getMyTransactionReceipt(resp).subscribe(newResp=>{
+           console.log('new responce', newResp);
+           this.etherscanLink = newResp.transactionHash;
+           this.contractAddress = newResp.contractAddress;
+         })
+
+        //this.hashes.push(resp)
+        // this.etherscanLink = `https://ropsten.etherscan.io/tx/${this.hashes[0].transactionHash}`
+      //  console.log('hashes ', this.hashes)
       })
-      console.log("what is in hash ", this.hashes)
+
+     
+      
   }
  
 

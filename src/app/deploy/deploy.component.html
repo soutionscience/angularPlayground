@@ -49,7 +49,21 @@
         </header>
         <div class="card-content">
           <p class="title">Transaction hash</p>
-          <p *ngIf ="hashes[0]">Hasg: {{hashes[0]}}</p>
+          <div class="hash">
+            <div>
+            <p >Hash:</p>
+            <div *ngIf="etherscanLink" class="etherscan">
+                <p *ngIf="etherscanLink"> Rospten Etherscan Link:</p>
+                {{etherscanLink}}
+                <a href={{etherscanLink}} target="blank">etherscan.io</a>
+                <p>Contract Address: {{contractAddress}}</p>
+              </div>
+
+            </div>
+        
+          </div>
+        
+          
 
         </div>
       </div>
