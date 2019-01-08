@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import Web3 from 'web3';
-import { bindNodeCallback, Observable } from 'rxjs';
+import { bindNodeCallback, Observable, observable } from 'rxjs';
 import { runInThisContext } from 'vm';
+import { async } from '@angular/core/testing';
 
 declare var window: any;
 declare var require: any
@@ -157,60 +158,91 @@ doCompileSolidityCode(code):Observable<any>{
 flattenSource(src){
   return src.replace(/\n/g, ' ');
 }
+async createTransactionHash(transactionHash){
+  let FinalTransactionHash = await this.web3.eth.getTransactionReceipt(transactionHash, (err, result)=>{
+    if(err){
+      console.log("error deploying contract ", err);
+      return err
+    }else{
+      console.log("deployed successfully")
+      return result
+ 
+    }
+  })
+
+}
 
  doDeployContract = (byteCode, abiDef, gas): Observable<any>=>{
- console.log("hitting web3 service")
 
+<<<<<<< HEAD
   //let myCoinbase = '';
   let contract;
    let  abiDefinition = abiDef
  contract = new this.web3.eth.contract(abiDefinition);
-
-  let params = { //create params
-    //from: this.web3.eth.getCoinbase((err,coinbase)=>{return coinbase+ ''}),
-     from: this.web3.coinbase,
-    data: byteCode,
-    gas: gas
-
+=======
+ 
+    return Observable.create(observer=>{
+  let contract = this.web3.eth.contract(abiDef)
+  console.log("hitting web3 service ", contract)
+  // 2. Create the params for deployment - all other params are optional, uses default
+  let  params = {
+   from: this.web3.eth.coinbase,
+   data: byteCode,
+   gas: gas
+ }
+ let contractData = contract.new.getData(10,{'data':byteCode});
+//  console.log('contract data ', contractData)
+ params.data=contractData;
+let transactionHash= this.web3.eth.sendTransaction(params, (err, result)=>{
+  if(err){
+    console.log("error creatting transaction Hash")
+    observer.error("deploy error ", err)
+  }else{
+    console.log('transaction hash created')
+    observer.next(result);
+    observer.complete();
   }
-//   //ready to deploy contract
-//   // 2 results are send back:  the transaction hash and later contract address.
-  let constructor_param = 10; // i dont get y this
-  console.log('what is a contract ', contract)
-  return contract.new(constructor_param, params, (err, result)=>{
-    console.log('test me marsh')
-    if(err){
-      console.log(err)
-      return err
-    }
-    else{
-      console.log(result)
-      return result
-    }
-  })
-//   return Observable.create(observer=>{
-//   contract.new(constructor_param, params, (err, result)=>{
-//     console.log("hera")
-//     if(err){
-//       console.log("error in the beginning")
-//     observer.error(err)
+>>>>>>> deploy
 
-//     }else{
-//       console.log('what is in result ', result)
-//       if(result.transactionHash){
-//         console.log("result transactionHash: ",result.transactionHash)
-//         observer.next(result.transactionHash)
-   
-//       }
-//       else{
-//         console.log("result address ", result.address)
-//         observer.next(result.address)
-//       }
-   
-//     }
-//     observer.complete()
-//   })
-// })
+})
+//  console.log('TxnHash=',transactionHash);
+
+
+//  this.web3.eth.getTransactionReceipt(transactionHash, (err, result)=>{
+//    if(err){
+//      console.log("error deploying contract ", err);
+//      observer.error("deploy error ", err)
+//    }else{
+//      console.log("deployed successfully")
+//      observer.next(result);
+//      observer.complete();
+
+//    }
+
+//  })
+
+  
+ })
+
+
+}
+
+getMyTransactionReceipt(transactionHash): Observable<any>{
+  return Observable.create(observer=>{
+     this.web3.eth.getTransactionReceipt(transactionHash, (err, result)=>{
+   if(err){
+     console.log("error deploying contract ", err);
+     observer.error("deploy error ", err)
+   }else{
+     console.log("deployed successfully")
+     observer.next(result);
+     observer.complete();
+
+   }
+
+ })
+
+  })
 
 }
 }

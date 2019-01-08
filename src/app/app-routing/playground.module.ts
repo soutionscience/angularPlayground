@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SendComponent } from '../send/send.component';
 import { CompileComponent } from '../compile/compile.component';
 import { DeployComponent } from '../deploy/deploy.component';
+import { InvokeComponent } from '../invoke/invoke.component';
 
 
 const routes: Routes =[
@@ -22,6 +23,6 @@ const routes: Routes =[
     FormsModule,
     ReactiveFormsModule
   ],
-  declarations: [PlaygroundPageComponent, MetamaskCheckComponent, UnlockComponent, ConnectComponent, SendComponent, CompileComponent, DeployComponent]
+  declarations: [PlaygroundPageComponent, MetamaskCheckComponent, UnlockComponent, ConnectComponent, SendComponent, CompileComponent, DeployComponent, InvokeComponent]
 })
 export class PlaygroundModule { }
