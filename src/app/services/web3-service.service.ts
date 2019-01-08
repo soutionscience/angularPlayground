@@ -174,12 +174,6 @@ async createTransactionHash(transactionHash){
 
  doDeployContract = (byteCode, abiDef, gas): Observable<any>=>{
 
-<<<<<<< HEAD
-  //let myCoinbase = '';
-  let contract;
-   let  abiDefinition = abiDef
- contract = new this.web3.eth.contract(abiDefinition);
-=======
  
     return Observable.create(observer=>{
   let contract = this.web3.eth.contract(abiDef)
@@ -202,7 +196,6 @@ let transactionHash= this.web3.eth.sendTransaction(params, (err, result)=>{
     observer.next(result);
     observer.complete();
   }
->>>>>>> deploy
 
 })
 //  console.log('TxnHash=',transactionHash);
