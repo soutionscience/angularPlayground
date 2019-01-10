@@ -3,6 +3,8 @@ import Web3 from 'web3';
 import { bindNodeCallback, Observable, observable } from 'rxjs';
 import { runInThisContext } from 'vm';
 import { async } from '@angular/core/testing';
+let contractDef = require('../../ethereum/contracts/tutorial.json')
+
 
 declare var window: any;
 declare var require: any
@@ -198,21 +200,7 @@ let transactionHash= this.web3.eth.sendTransaction(params, (err, result)=>{
   }
 
 })
-//  console.log('TxnHash=',transactionHash);
 
-
-//  this.web3.eth.getTransactionReceipt(transactionHash, (err, result)=>{
-//    if(err){
-//      console.log("error deploying contract ", err);
-//      observer.error("deploy error ", err)
-//    }else{
-//      console.log("deployed successfully")
-//      observer.next(result);
-//      observer.complete();
-
-//    }
-
-//  })
 
   
  })
@@ -238,4 +226,64 @@ getMyTransactionReceipt(transactionHash): Observable<any>{
   })
 
 }
+//create contract instance from deployed contract
+createContractInstance(addr){
+ 
+  let abiDef = contractDef.abi;
+  let contract = this.web3.eth.contract(abiDef);
+  let address = addr;
+  let instance = contract.at(address);
+  return instance;
+
+}
+
+setNumSend(address, amount, gas ):Observable<any>{
+  console.log("hitting service")
+  return Observable.create(observer=>{
+
+  let instance = this.createContractInstance(address);
+  console.log('set number clicked: intance', instance);
+  let transactionObject ={
+    from: this.web3.eth.coinbase,
+    gas: gas
+  }
+
+  instance.setNum.sendTransaction(amount, transactionObject, (err, result)=>{
+    if(err){
+      console.log('error sending tranascationt ', err)
+      observer.error(err)
+    }else{
+      console.log('transaction send succesfully ', result)
+      observer.next(result);
+      observer.complete();
+    }
+  })
+
+  
+})
+}
+getNum(address, gas ):Observable<any>{
+  return Observable.create(observer=>{
+    let instance = this.createContractInstance(address);
+    let transactionObject ={
+      from: this.web3.eth.coinbase,
+      gas: gas
+    }
+    instance.getNum.sendTransaction(transactionObject, (err, result)=>{
+      if(err){
+      console.log('error geting num ', err)
+      observer.error(err)
+      }
+      else{
+        console.log('returned value', result);
+        observer.next(result);
+        observer.complete()
+
+      }
+    })
+  })
+
+}
+
+
 }

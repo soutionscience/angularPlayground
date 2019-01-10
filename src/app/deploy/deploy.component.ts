@@ -17,7 +17,7 @@ export class DeployComponent implements OnInit {
   etherscanLink: String;
   contractAddress: String
 
-  constructor(private fb: FormBuilder, private web3Api: Web3ServiceService) {
+  constructor(private fb: FormBuilder,  private web3Api: Web3ServiceService) {
     this.hashes = [ ]
    }
 
