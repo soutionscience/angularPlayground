@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build-prod": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -25,7 +26,7 @@
     "bulma-pageloader": "^2.1.0",
     "core-js": "^2.5.4",
     "rxjs": "^6.4.0",
-    "web3": "^0.20.5",
+    "web3": "^1.2.4",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {

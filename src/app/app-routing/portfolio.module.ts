@@ -14,6 +14,6 @@ const routes: Routes =[
     CommonModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [ProjectsComponent, CertificationsComponent, WebsiteComponent]
+  declarations: []
 })
 export class PortfolioModule { }

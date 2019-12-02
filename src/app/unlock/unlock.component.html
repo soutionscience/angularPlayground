@@ -23,7 +23,7 @@
                         
                         <div class="control is-expanded">
                             <div class="select is-fullwidth">
-                              {{accountsForm.values |json}}
+                              <!-- {{accountsForm.values |json}} -->
                               <select name="accounts" formControlName ="selected">
                                 <option  *ngFor="let a of accounts" [ngValue] ="a"> {{a}}</option>
                               
