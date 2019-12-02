@@ -4,3 +4,7 @@ h1{
 span{
    margin: 0px;
 }
+
+.show{
+    display: none;;
+}

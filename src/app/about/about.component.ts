@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject, ElementRef, HostListener } from '@angular/core';
 import { flyInOut } from '../animations/app-animations';
-import { DOCUMENT } from '@angular/platform-browser';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-about',
@@ -12,33 +12,42 @@ import { DOCUMENT } from '@angular/platform-browser';
 })
 export class AboutComponent implements OnInit {
    state='hide'
+   showWeb: Boolean;
+   showAdmin: Boolean
+   showCloud: Boolean;
 
   constructor() { }
 
-  // @HostListener('window:scroll', ['$event'])
-  // checkScroll(){
-  //   console.log("check scroll")
- 
-  //   const componentPosition = this.el.nativeElement.offsetTop
-  //   const scrollPosition = document.documentElement.scrollTop + 430;
-  //   console.log("scroll posion is ", document.documentElement.scrollTop)
-  //   console.log("component postion is ", this.el.nativeElement.offsetTop)
-
-  //   if(scrollPosition >= componentPosition){
-  //     this.state = 'show'
-  //   }else{
-  //     this.state = 'hide'
-  //   }
-  // }
 
 
-  ngOnInit() { }
+
+  ngOnInit() {
+    this.showWeb = true;
+    this.showAdmin = false;
+    this.showCloud= false
+   }
   ngAfterViewInit(){
     this.state = 'show'
   }
 
   animate(){
     this.state = this.state === 'hide'? 'show': 'hide';
+  }
+  selected(displine){
+    if(displine == 'web'){
+      this.showWeb = true;
+      this.showAdmin = false;
+      this.showCloud = false;
+    }else if(displine =='it'){
+      this.showAdmin = true;
+      this.showWeb = false;
+      this.showCloud = false;
+    }else{
+      this.showWeb= false;
+      this.showAdmin = false;
+      this.showCloud = true;
+
+    }
   }
 
 }

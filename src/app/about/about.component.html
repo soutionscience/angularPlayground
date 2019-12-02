@@ -26,6 +26,65 @@
       </div>
       </div>
       <div class="column">
+        <div class="card">
+            <header class="card-header">
+                <p class="card-header-title is-centered has-background-primary has-text-white">
+                 I am Available for the following jobs
+                </p>
+               
+              </header>
+              <div class="card-content">
+                  <div class="content">
+                      <div class="tabs is-boxed">
+                          <ul>
+                            <li [ngClass]="{'is-active': showWeb}"><a (click)="selected('web')">Web Applications Dev.</a></li>
+                            <li [ngClass]="{'is-active': showAdmin}"><a (click)="selected('it')">IT Admin</a></li>
+                            <li [ngClass]="{'is-active': showCloud}"><a (click)="selected('cloud')">Cloud Practitioner</a></li>
+                         
+                          </ul>
+                        </div>
+                        <div [ngClass]="{'show': !showWeb}">
+                          <p>I have over 5 yrs. of experience developing client facing
+                             applications from working as a freelancer to dev lead. 
+                             My toolkit includes JavaScript, html, css, angular & react framework 
+                            for the front end, Express, node.js and SQL for the server and Ionic and android studio for mobile app.</p>
+                            <footer class="card-footer">
+                                <a href="#" class="card-footer-item has-background-danger has-text-white">Download Webdev Resume</a>
+                                <a href="#" class="card-footer-item">Call for quick chat: <br/>+254 724 604 800</a>
+                                
+                              </footer>
+                        </div>
+                        <div [ngClass]="{'show': !showAdmin}">
+                            <p>Over the years I have acquired relevant administration experience in Information Technologies.
+                               Initially, as co-founder of IT & security systems installation company, I got the opportunity to plan, 
+                               manage and supervise complex long-term (over 6 months) security installation contracts leading a team 
+                               of about 6 engineers and numerous casual laborers.
+                                Later, I have managed a remote team of developers building applications in the cutting-edge space 
+                                of blockchain technology. 
+                                My ACCA qualifications have come in handy in ensuring I have the relevant skills in budgeting, 
+                                cost management, performance review & management and deep accounting skills. 
+                                </p>
+                              <footer class="card-footer">
+                                  <a href="../../assets/documents/Resume-admin.pdf"  download class="card-footer-item has-background-danger has-text-white">Download Webdev Resume</a>
+                                  <a href="#" class="card-footer-item">Call for quick chat: <br/>+254 724 604 800</a>
+                                  
+                                </footer>
+                          </div>
+                          <div [ngClass]="{'show': !showCloud}">
+                              <p>As a freelance software Engineer, I have hands-on experience working 
+                                with numerous cloud services providers. From general hosting service
+                                 providers to services like google cloud, Heroku and more. Amazon’s 
+                                 Aws tools and services are now my go-to cloud solution providers. 
+                                I hold AWS certifications and I am currently pursuing more</p>
+                                <footer class="card-footer">
+                                    <a href="../../assets/documents/Resume-admin.pdf"  download class="card-footer-item has-background-danger has-text-white">Download Cloud practitioner CV</a>
+                                    <a href="#" class="card-footer-item">Call for quick chat: <br/>+254 724 604 800</a>
+                                    
+                                  </footer>
+                            </div>
+                  </div>
+                </div>
+        </div>
       </div>
     </div>
    
