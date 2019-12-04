@@ -52,14 +52,17 @@ export class Web3ServiceService {
   //     }
   //   })
   return Observable.create(observer=>{
-    this.web3.version.getNode(function(err, result){
-      if(err){
-        observer.error("there was an error getting info")
-      }else{
-        observer.next(result);
-        observer.complete()
-      }
-    })
+    // this.web3.version.getNode(function(err, result){
+    //   if(err){
+    //     observer.error("there was an error getting info")
+    //   }else{
+    //     observer.next(result);
+    //     observer.complete()
+    //   }
+    // })
+    let version = this.web3.version;
+    observer.next(version)
+    observer.complete()
   })
   }
 
@@ -95,31 +98,27 @@ getBalance(account): Observable<any>{ //get accounts balance
       if(err){
         observer.error('there was an error fetching account balance')
       }
-      observer.next(this.web3.fromWei(balance, 'ether'));
+      observer.next(this.web3.utils.fromWei(balance, 'ether'));
       observer.complete();
     })
   })
   }
-  doUnlock(number, password): Observable<any>{
+  doUnlock(address, password): Observable<any>{
     return Observable.create(observer=>{
-    this.web3.personal.unlockAccount(number, password, function(err, result){
-      if(err){
-        observer.error('there was an error fetching account balance')
-      
+    this.web3.eth.personal.unlockAccount(address, password, 500).then(result=>{
+      if(!result){
+        console.log('error getting account')
       }else{
-        if(result){
-         observer.next(result)
-         observer.complete()
-        }
+        observer.next(result);
+        observer.complete()
       }
-
     })
   })
 }
 
 doSendTransaction(transactionObject):Observable<any>{
   return Observable.create(observer=>{
-    transactionObject.value = this.web3.toWei(transactionObject.value, 'ether');
+    transactionObject.value = this.web3.utils.toWei(transactionObject.value, 'ether');
     console.log('transaction ', transactionObject.value)
 
 
@@ -141,17 +140,17 @@ doCompileSolidityCode(code):Observable<any>{
  code = this.flattenSource(code);
   
   return Observable.create(observer=>{
-    this.web3.eth.compile.solidity(code, function(err, result){
-      if(err){ console.log("this ama ", err)
-              observer.error("compile error ", err)
-      }else{
-        console.log('what is the result then', result)
-        observer.next(result);
-        observer.complete()
-      }
+    // this.web3.utils.compile.solidity(code, function(err, result){
+    //   if(err){ console.log("this ama ", err)
+    //           observer.error("compile error ", err)
+    //   }else{
+    //     console.log('what is the result then', result)
+    //     observer.next(result);
+    //     observer.complete()
+    //   }
     
       
-    })
+    // })
 
   })
 
@@ -178,15 +177,15 @@ async createTransactionHash(transactionHash){
 
  
     return Observable.create(observer=>{
-  let contract = this.web3.eth.contract(abiDef)
+  let contract =  new this.web3.eth.Contract(abiDef)
   console.log("hitting web3 service ", contract)
   // 2. Create the params for deployment - all other params are optional, uses default
   let  params = {
-   from: this.web3.eth.coinbase,
+   from: '1213',
    data: byteCode,
    gas: gas
  }
- let contractData = contract.new.getData(10,{'data':byteCode});
+ let contractData = contract.methods.getData(10,{'data':byteCode});
 //  console.log('contract data ', contractData)
  params.data=contractData;
 let transactionHash= this.web3.eth.sendTransaction(params, (err, result)=>{
@@ -230,10 +229,9 @@ getMyTransactionReceipt(transactionHash): Observable<any>{
 createContractInstance(addr){
  
   let abiDef = contractDef.abi;
-  let contract = this.web3.eth.contract(abiDef);
   let address = addr;
-  let instance = contract.at(address);
-  return instance;
+  let instance = new this.web3.eth.Contract(abiDef, address);
+   return instance;
 
 }
 
@@ -244,11 +242,11 @@ setNumSend(address, amount, gas ):Observable<any>{
   let instance = this.createContractInstance(address);
   console.log('set number clicked: intance', instance);
   let transactionObject ={
-    from: this.web3.eth.coinbase,
+   from: '1213',
     gas: gas
   }
 
-  instance.setNum.sendTransaction(amount, transactionObject, (err, result)=>{
+  instance.methods.setNum.sendTransaction(amount, transactionObject, (err, result)=>{
     if(err){
       console.log('error sending tranascationt ', err)
       observer.error(err)
@@ -266,10 +264,10 @@ getNum(address, gas ):Observable<any>{
   return Observable.create(observer=>{
     let instance = this.createContractInstance(address);
     let transactionObject ={
-      from: this.web3.eth.coinbase,
+      from: '12345',
       gas: gas
     }
-    instance.getNum.sendTransaction(transactionObject, (err, result)=>{
+    instance.methods.getNum.sendTransaction(transactionObject, (err, result)=>{
       if(err){
       console.log('error geting num ', err)
       observer.error(err)
